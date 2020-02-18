@@ -20,10 +20,10 @@ export default {
 
 <style>
 .fade-enter-active {
-  transition: all 0.3s ease;
+  transition: all 1s ease;
 }
 .fade-leave-active {
-  transition: all 0.3s ease;
+  transition: all 1s ease;
 }
 .slide-fade-enter,
 .slide-fade-leave-to .slide-fade-leave-active {

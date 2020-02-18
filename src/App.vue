@@ -1,5 +1,5 @@
 <template>
-  <div class="container d-flex justify-content-center">
+  <div class="container d-flex justify-content-center vertical-center">
     <div class="row">
       <div class="card" style="width: 25rem;">
         <div class="card-body">
@@ -84,7 +84,14 @@ export default {
 </script>
 
 <style>
+.vertical-center {
+  min-height: 100%; /* Fallback for browsers do NOT support vh unit */
+  min-height: 100vh; /* These two lines are counted as one :-)       */
+
+  display: flex;
+  align-items: center;
+}
 .slide-fade-enter-active {
-  transition: all 0.3s ease;
+  transition: all 1s ease;
 }
 </style>
