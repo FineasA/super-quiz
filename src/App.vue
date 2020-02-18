@@ -1,7 +1,7 @@
 <template>
   <div class="container d-flex justify-content-center vertical-center">
     <div class="row">
-      <div class="card" style="width: 25rem;">
+      <div class="card" style="width: 25rem">
         <div class="card-body">
           <h1 class="card-title text-center" style="color: #0068D9">
             Super Quiz

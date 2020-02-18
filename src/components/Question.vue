@@ -1,7 +1,9 @@
 <template>
   <div class="card">
     <div>
-      <h3 class="card-title text-center">{{ question }}</h3>
+      <h3 class="card-title text-center" style="margin-top: 25px">
+        {{ question }}
+      </h3>
     </div>
     <div class="card-body">
       <div class="col text-center">
