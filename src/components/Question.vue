@@ -39,6 +39,8 @@
 </template>
 
 <script>
+import { EventBus } from "../main.js";
+
 export default {
   data() {
     return {
@@ -123,7 +125,7 @@ export default {
       return number;
     },
     answer(isCorrect) {
-      console.log(isCorrect);
+      EventBus.$emit("answered", isCorrect);
       this.$emit("answered", isCorrect);
     },
     //addition function
