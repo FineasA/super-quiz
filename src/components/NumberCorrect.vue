@@ -1,9 +1,15 @@
 <template>
-  <p>
-    Number Correct: ({{ numberCorrect }}) -- Number Incorrect: ({{
-      numberIncorrect
-    }})
-  </p>
+  <div class="row text-center d-flex justify-content-center">
+    <h5>
+      Number Correct
+      <p style="color: green">({{ numberCorrect }})</p>
+    </h5>
+    --
+    <h5>
+      Number Incorrect
+      <p style="color: red">({{ numberIncorrect }})</p>
+    </h5>
+  </div>
 </template>
 
 <script>
