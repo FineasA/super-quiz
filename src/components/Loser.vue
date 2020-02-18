@@ -1,5 +1,5 @@
 <template>
-  <div class="alert alert-danger text-center">
+  <div class="alert alert-danger text-center" name="fade">
     <h1>You lose! Try again?</h1>
     <hr />
     <button class="btn btn-primary" @click="reset">Reset</button>
@@ -19,4 +19,14 @@ export default {
 </script>
 
 <style>
+.fade-enter-active {
+  transition: all 0.3s ease;
+}
+.fade-leave-active {
+  transition: all 0.3s ease;
+}
+.slide-fade-enter,
+.slide-fade-leave-to .slide-fade-leave-active {
+  opacity: 0;
+}
 </style>

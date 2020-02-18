@@ -1,7 +1,7 @@
 <template>
-  <div class="panel panel-default">
-    <div class="panel-heading">
-      <h3 class="panel-title text-center">Are you ready to start?</h3>
+  <div class="card">
+    <div class="card-header">
+      <h3 class="card-title text-center">Are you ready to start?</h3>
     </div>
   </div>
 </template>

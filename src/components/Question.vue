@@ -1,10 +1,10 @@
 <template>
-  <div class="panel panel-default">
-    <div class="panel-heading">
-      <h3 class="panel-title text-center">{{ question }}</h3>
+  <div class="card">
+    <div>
+      <h3 class="card-title text-center">{{ question }}</h3>
     </div>
-    <div class="panel-body">
-      <div class="col-xs-12 col-sm-6 text-center">
+    <div class="card-body">
+      <div class="col text-center">
         <button
           class="btn btn-primary"
           style="margin: 10px"

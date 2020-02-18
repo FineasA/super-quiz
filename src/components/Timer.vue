@@ -1,6 +1,7 @@
 <template>
-  <div class="col-xs-12 col-sm-6 text-center">
+  <div class="col text-center">
     <start-game v-show="!gameStarted"></start-game>
+    <br /><br />
     <button
       v-if="!gameStarted"
       @click="gameStartedFn(gameStarted)"
@@ -9,9 +10,13 @@
       Begin Quiz
     </button>
 
-    <h3 v-if="gameStarted" class="row text-center panel-default">
+    <h3
+      v-if="gameStarted"
+      class="row text-center d-flex justify-content-center"
+    >
       {{ countdown }} seconds remaining...
     </h3>
+    <number-correct v-if="gameStarted"></number-correct>
     <br />
     <br />
     <div class="progress">
@@ -29,11 +34,13 @@
 
 <script>
 import StartGame from "../components/StartGame.vue";
+import NumberCorrect from "../components/NumberCorrect.vue";
 import { EventBus } from "../main";
 
 export default {
   components: {
-    StartGame
+    StartGame,
+    NumberCorrect
   },
   data() {
     return {

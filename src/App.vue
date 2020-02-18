@@ -1,15 +1,12 @@
 <template>
-  <div class="container">
+  <div class="container d-flex justify-content-center">
     <div class="row">
-      <div class="col-xs-12 col-sm8 col-sm-offset-2 col-md-6 col-md-offset-3">
-        <h1 class="text-center">Super Quiz</h1>
-      </div>
       <hr />
-
-      <div class="row">
-        <div
-          class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3"
-        >
+      <div class="card" style="width: 25rem;">
+        <div class="card-body">
+          <h1 class="card-title text-center" style="color: #0068D9">
+            Super Quiz
+          </h1>
           <transition name="slide-fade">
             <component
               v-if="gameStarted"
@@ -18,6 +15,9 @@
               @confirmed="mode = 'question'"
             ></component>
           </transition>
+        </div>
+
+        <div class="card-body">
           <br />
           <timer
             @started="gameStarted = !gameStarted"
@@ -85,15 +85,7 @@ export default {
 </script>
 
 <style>
-/* .slide-fade-enter-active {
+.slide-fade-enter-active {
   transition: all 0.3s ease;
 }
-.slide-fade-leave-active {
-  transition: all 0.8s cubic-bezier(1, 0.5, 0.8, 1);
-} */
-/* .slide-fade-enter, .slide-fade-leave-to */
-/* .slide-fade-leave-active below version 2.1.8 { */
-/* transform: translateX(10px); */
-/* opacity: 0; */
-/* } */
 </style>
