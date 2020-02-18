@@ -4,7 +4,7 @@
       Number Correct
       <p style="color: green">({{ numberCorrect }})</p>
     </h5>
-    --
+    <p>- - -</p>
     <h5>
       Number Incorrect
       <p style="color: red">({{ numberIncorrect }})</p>

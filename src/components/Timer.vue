@@ -16,6 +16,7 @@
     >
       {{ countdown }} seconds remaining...
     </h3>
+    <hr />
     <number-correct v-if="gameStarted"></number-correct>
     <br />
     <br />

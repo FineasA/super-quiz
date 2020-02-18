@@ -6,6 +6,7 @@
           <h1 class="card-title text-center" style="color: #0068D9">
             Super Quiz
           </h1>
+          <hr />
           <transition name="slide-fade">
             <component
               v-if="gameStarted"
@@ -17,7 +18,6 @@
         </div>
 
         <div class="card-body">
-          <br />
           <timer
             @started="gameStarted = !gameStarted"
             @game-lost="mode = 'loser'"
