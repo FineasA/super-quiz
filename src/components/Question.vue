@@ -10,28 +10,32 @@
         <button
           class="btn btn-primary"
           style="margin: 10px"
-          @click="answer(btnData[0].correct)"
+          @click="answer(btnData[0].correct, (btnData[0].picked = true))"
+          :style="[btnData[0].picked ? incorrectClass : null]"
         >
           {{ btnData[0].answer }}
         </button>
         <button
           class="btn btn-primary"
           style="margin: 10px"
-          @click="answer(btnData[1].correct)"
+          @click="answer(btnData[1].correct, (btnData[1].picked = true))"
+          :style="[btnData[1].picked ? incorrectClass : null]"
         >
           {{ btnData[1].answer }}
         </button>
         <button
           class="btn btn-primary"
           style="margin: 10px"
-          @click="answer(btnData[2].correct)"
+          @click="answer(btnData[2].correct, (btnData[2].picked = true))"
+          :style="[btnData[2].picked ? incorrectClass : null]"
         >
           {{ btnData[2].answer }}
         </button>
         <button
           class="btn btn-primary"
           style="margin: 10px"
-          @click="answer(btnData[3].correct)"
+          @click="answer(btnData[3].correct, (btnData[3].picked = true))"
+          :style="[btnData[3].picked ? incorrectClass : null]"
         >
           {{ btnData[3].answer }}
         </button>
@@ -50,23 +54,31 @@ export default {
       randomNum1: 0,
       randomNum2: 0,
       mode: null,
+      incorrectChoicePicked: false,
+      incorrectClass: {
+        backgroundColor: "red"
+      },
       correctAnswer: 0,
       btnData: [
         {
           correct: true,
-          answer: 0
+          answer: 0,
+          picked: false
         },
         {
           correct: false,
-          answer: 0
+          answer: 0,
+          picked: false
         },
         {
           correct: false,
-          answer: 0
+          answer: 0,
+          picked: false
         },
         {
           correct: false,
-          answer: 0
+          answer: 0,
+          picked: false
         }
       ]
     };
@@ -126,7 +138,10 @@ export default {
       number = Math.floor(Math.random() * (100 - 1) + 1);
       return number;
     },
-    answer(isCorrect) {
+    answer(isCorrect, picked) {
+      if (picked && !isCorrect) {
+        this.incorrectChoicePicked = true;
+      }
       EventBus.$emit("answered", isCorrect);
       this.$emit("answered", isCorrect);
     },

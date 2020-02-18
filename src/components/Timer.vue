@@ -48,13 +48,21 @@ export default {
       countdown: 5,
       gameStarted: false,
       gameLost: false,
-      width: 100
+      width: 100,
+      answeredCorrect: false
     };
   },
 
   methods: {
     timer() {
       let timer = setInterval(() => {
+        if (this.answeredCorrect) {
+          console.log("uhh");
+          this.countdown = 5;
+          this.width = 100;
+          clearInterval(timer);
+          return (this.answeredCorrect = false);
+        }
         if (this.countdown === 0) {
           clearInterval(timer);
           this.width = 100;
@@ -84,9 +92,13 @@ export default {
     });
     EventBus.$on("answered", data => {
       if (data) {
+        this.answeredCorrect = true;
         this.width = 100;
         this.countdown = 5;
       }
+    });
+    EventBus.$on("confirmed", () => {
+      this.timer();
     });
   }
 };

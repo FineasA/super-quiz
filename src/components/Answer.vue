@@ -7,9 +7,12 @@
 </template>
 
 <script>
+import { EventBus } from "../main.js";
+
 export default {
   methods: {
     nextQuestion() {
+      EventBus.$emit("confirmed");
       this.$emit("confirmed");
     }
   }

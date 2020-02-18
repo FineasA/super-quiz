@@ -57,7 +57,6 @@ export default {
         this.mode = "answer";
       } else {
         this.mode = "question";
-        alert("Wrong! Try again!");
       }
     },
     gameStartedFn(event) {
