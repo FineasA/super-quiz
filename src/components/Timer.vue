@@ -57,7 +57,6 @@ export default {
     timer() {
       let timer = setInterval(() => {
         if (this.answeredCorrect) {
-          console.log("uhh");
           this.countdown = 5;
           this.width = 100;
           clearInterval(timer);
@@ -80,7 +79,6 @@ export default {
       this.$emit("started");
 
       if (gameStarted) {
-        console.log("yee");
         this.timer();
       }
     }

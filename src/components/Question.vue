@@ -101,7 +101,6 @@ export default {
     //generate the question and button answers
     generateQuestion(mode) {
       let modeStr = "";
-      console.log("mode: ", this.mode);
       //generate random numbers for expression
       this.randomNum1 = this.generateRandomNumbers(this.randomNum1);
       this.randomNum2 = this.generateRandomNumbers(this.randomNum2);
@@ -128,7 +127,6 @@ export default {
 
       //shuffle the data so the actual answer is not on the same button
       this.shuffleData(this.btnData);
-      console.log(this.btnData);
 
       //return the string that displays what the problem is
       return (this.question = `What is ${this.randomNum1} ${modeStr} ${this.randomNum2}?`);
