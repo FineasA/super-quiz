@@ -7,14 +7,12 @@
             Super Quiz
           </h1>
           <hr />
-          <transition name="slide-fade">
-            <component
-              v-if="gameStarted"
-              :is="mode"
-              @answered="answered($event)"
-              @confirmed="mode = 'question'"
-            ></component>
-          </transition>
+          <component
+            v-if="gameStarted"
+            :is="mode"
+            @answered="answered($event)"
+            @confirmed="mode = 'question'"
+          ></component>
         </div>
 
         <div class="card-body">
@@ -52,8 +50,17 @@ export default {
     };
   },
   methods: {
+    playSound(sound) {
+      if (sound) {
+        let audio = new Audio(sound);
+        audio.play();
+      }
+    },
     answered(isCorrect) {
       if (isCorrect) {
+        this.playSound(
+          "http://soundbible.com/mp3/Air Plane Ding-SoundBible.com-496729130.mp3"
+        );
         this.mode = "answer";
       } else {
         this.mode = "question";
@@ -89,8 +96,5 @@ export default {
 
   display: flex;
   align-items: center;
-}
-.slide-fade-enter-active {
-  transition: all 1s ease;
 }
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <div class="alert alert-danger text-center" name="fade">
+  <div class="alert alert-danger text-center">
     <h1>You lose! Try again?</h1>
     <hr />
     <button class="btn btn-primary" @click="reset">Reset</button>
@@ -12,21 +12,20 @@ import { EventBus } from "../main.js";
 export default {
   methods: {
     reset() {
+      this.playSound(
+        "http://soundbible.com/mp3/Air Plane Ding-SoundBible.com-496729130.mp3"
+      );
       EventBus.$emit("reset", 5);
+    },
+    playSound(sound) {
+      if (sound) {
+        let audio = new Audio(sound);
+        audio.play();
+      }
     }
   }
 };
 </script>
 
 <style>
-.fade-enter-active {
-  transition: all 1s ease;
-}
-.fade-leave-active {
-  transition: all 1s ease;
-}
-.slide-fade-enter,
-.slide-fade-leave-to .slide-fade-leave-active {
-  opacity: 0;
-}
 </style>

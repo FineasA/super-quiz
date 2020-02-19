@@ -56,6 +56,7 @@ export default {
   methods: {
     timer() {
       let timer = setInterval(() => {
+        this.playSound("https://soundbible.com/grab.php?id=2044&type=mp3");
         if (this.answeredCorrect) {
           this.countdown = 5;
           this.width = 100;
@@ -64,6 +65,7 @@ export default {
         }
         if (this.countdown === 0) {
           clearInterval(timer);
+          this.playSound("https://soundbible.com/grab.php?id=499&type=mp3");
           this.width = 100;
           this.gameLost = true;
           this.$emit("game-lost");
@@ -73,7 +75,16 @@ export default {
         this.countdown--;
       }, 1000);
     },
+    playSound(sound) {
+      if (sound) {
+        let audio = new Audio(sound);
+        audio.play();
+      }
+    },
     gameStartedFn(gameStarted) {
+      this.playSound(
+        "http://soundbible.com/mp3/Air Plane Ding-SoundBible.com-496729130.mp3"
+      );
       gameStarted = !gameStarted;
       this.gameStarted = !this.gameStarted;
       this.$emit("started");

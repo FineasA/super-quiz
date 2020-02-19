@@ -1,47 +1,49 @@
 <template>
-  <div class="card">
-    <div>
-      <h3 class="card-title text-center" style="margin-top: 25px">
-        {{ question }}
-      </h3>
-    </div>
-    <div class="card-body">
-      <div class="col text-center">
-        <button
-          class="btn btn-primary"
-          style="margin: 10px"
-          @click="answer(btnData[0].correct, (btnData[0].picked = true))"
-          :style="[btnData[0].picked ? incorrectClass : null]"
-        >
-          {{ btnData[0].answer }}
-        </button>
-        <button
-          class="btn btn-primary"
-          style="margin: 10px"
-          @click="answer(btnData[1].correct, (btnData[1].picked = true))"
-          :style="[btnData[1].picked ? incorrectClass : null]"
-        >
-          {{ btnData[1].answer }}
-        </button>
-        <button
-          class="btn btn-primary"
-          style="margin: 10px"
-          @click="answer(btnData[2].correct, (btnData[2].picked = true))"
-          :style="[btnData[2].picked ? incorrectClass : null]"
-        >
-          {{ btnData[2].answer }}
-        </button>
-        <button
-          class="btn btn-primary"
-          style="margin: 10px"
-          @click="answer(btnData[3].correct, (btnData[3].picked = true))"
-          :style="[btnData[3].picked ? incorrectClass : null]"
-        >
-          {{ btnData[3].answer }}
-        </button>
+  <transition name="bounce">
+    <div class="card">
+      <div>
+        <h3 class="card-title text-center" style="margin-top: 25px">
+          {{ question }}
+        </h3>
+      </div>
+      <div class="card-body">
+        <div class="col text-center">
+          <button
+            class="btn btn-primary"
+            style="margin: 10px"
+            @click="answer(btnData[0].correct, (btnData[0].picked = true))"
+            :style="[btnData[0].picked ? incorrectClass : null]"
+          >
+            {{ btnData[0].answer }}
+          </button>
+          <button
+            class="btn btn-primary"
+            style="margin: 10px"
+            @click="answer(btnData[1].correct, (btnData[1].picked = true))"
+            :style="[btnData[1].picked ? incorrectClass : null]"
+          >
+            {{ btnData[1].answer }}
+          </button>
+          <button
+            class="btn btn-primary"
+            style="margin: 10px"
+            @click="answer(btnData[2].correct, (btnData[2].picked = true))"
+            :style="[btnData[2].picked ? incorrectClass : null]"
+          >
+            {{ btnData[2].answer }}
+          </button>
+          <button
+            class="btn btn-primary"
+            style="margin: 10px"
+            @click="answer(btnData[3].correct, (btnData[3].picked = true))"
+            :style="[btnData[3].picked ? incorrectClass : null]"
+          >
+            {{ btnData[3].answer }}
+          </button>
+        </div>
       </div>
     </div>
-  </div>
+  </transition>
 </template>
 
 <script>
@@ -136,8 +138,15 @@ export default {
       number = Math.floor(Math.random() * (100 - 1) + 1);
       return number;
     },
+    playSound(sound) {
+      if (sound) {
+        let audio = new Audio(sound);
+        audio.play();
+      }
+    },
     answer(isCorrect, picked) {
       if (picked && !isCorrect) {
+        this.playSound("https://soundbible.com/grab.php?id=1642&type=mp3");
         this.incorrectChoicePicked = true;
       }
       EventBus.$emit("answered", isCorrect);
@@ -189,4 +198,21 @@ export default {
 </script>
 
 <style>
+.bounce-enter-active {
+  animation: bounce-in 0.5s;
+}
+.bounce-leave-active {
+  animation: bounce-in 0.5s reverse;
+}
+@keyframes bounce-in {
+  0% {
+    transform: scale(0);
+  }
+  50% {
+    transform: scale(1.5);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
 </style>
