@@ -65,7 +65,7 @@ export default {
         }
         if (this.countdown === 0) {
           clearInterval(timer);
-          this.playSound("https://soundbible.com/grab.php?id=499&type=mp3");
+          this.playSound("https://soundbible.com/grab.php?id=1830&type=mp3");
           this.width = 100;
           this.gameLost = true;
           this.$emit("game-lost");
